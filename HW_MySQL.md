@@ -1,4 +1,4 @@
-#  HOMEWORK 11 MySQL
+##  HOMEWORK 10 MySQL
 
 ### 1a. Display the first and last names of all actors from the table actor
 
