@@ -124,7 +124,7 @@ select first_name, last_name, address
 ### 6b. Use JOIN to display the total amount rung up by each staff member in August of 2005. Use tables staff and payment.
 
 ```
-select staff_id, first_name, last_name, sum(amount) as total_amount
+select staff_id, first_name, last_name, concat('$',format(sum(amount),2)) as total_amount
   from staff s
   join payment p
  using (staff_id)
@@ -156,7 +156,7 @@ select count(inventory_id) as Total_copies
  ### 6e. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name:
 
 ```
-select last_name, first_name , sum(amount)
+select last_name, first_name , concat('$',format(sum(amount),2)) as total_paid
  from customer c
  join payment p
    using (customer_id)
@@ -239,7 +239,7 @@ order by total_times_rented desc;
 ### 7f. Write a query to display how much business, in dollars, each store brought in.
 
 ```
-select st.store_id, sum(p.amount) as total_business
+select st.store_id, concat('$',format(sum(p.amount),2)) as total_business
   from store st
   join customer c
  using (store_id)
@@ -265,7 +265,7 @@ select s.store_id, c.city, co.country
 ### 7h. List the top five genres in gross revenue in descending order. (Hint: you may need to use the following tables: category, film_category, inventory, payment, and rental.)
 
 ```
-select cat.name, sum(p.amount) as gross_revenue
+select cat.name, concat('$',format(sum(p.amount),2)) as gross_revenue
   from category cat
   join film_category fc
     on cat.category_id = fc.category_id
